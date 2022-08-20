@@ -39,9 +39,9 @@ echo $PWD/mozilla-central > runtime/.moz-central
 Now, we need to add our app to the gecko source code:
 
 ```bash
-# On linux add -r to each of the following commands
-ln -s runtime mozilla-central/runtime
-ln -s runtime/runtime.mozconfig mozilla-central/.mozconfig
+# On macos remove -r to each of the following commands
+ln -s -r runtime mozilla-central/runtime
+ln -s -r runtime/runtime.mozconfig mozilla-central/.mozconfig
 ```
 
 Apply custom patches:
