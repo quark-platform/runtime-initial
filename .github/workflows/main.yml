@@ -1,0 +1,51 @@
+name: CI Builds
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  linux:
+    name: Linux Builds
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: runtime
+
+      - uses: actions/checkout@v3
+        with:
+          path: mozilla-central
+          repository: mozilla/gecko-dev
+
+      - name: Setup
+        run: |
+          echo $PWD/mozilla-central > runtime/.moz-central
+          # On linux add -r to each of the following commands        
+          ln -s -r runtime mozilla-central/runtime
+          ln -s -r runtime/runtime.mozconfig mozilla-central/.mozconfig
+      - name: Patch
+        run: |
+          cd runtime
+          ./patches.sh import
+      - name: Build
+        run: |
+          cd mozilla-central
+          ./mach build
+      - name: Package
+        run: |
+          cd mozilla-central
+          ./mach package
+
+      - name: Collect artifacts
+        run: |
+          mv newapp-sym/dist/quark-runtime-*.tar.bz2 quark-runtime.tar.bz2
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: Linux
+          path: quark-runtime.tar.bz2
