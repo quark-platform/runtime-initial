@@ -10,7 +10,8 @@
     "build": "gluon build",
     "start": "gluon run",
     "package": "gluon package",
-    "bindVersion": "rm src/runtime/config/version.txt && echo -n $(gluon ff-version | tr -d '\n') > src/runtime/config/version.txt && rm src/runtime/config/version_display.txt && echo -n $(gluon ff-version | tr -d '\n') > src/runtime/config/version_display.txt"
+    "bindVersion": "rm src/runtime/config/version.txt && echo -n $(gluon ff-version | tr -d '\n') > src/runtime/config/version.txt && rm src/runtime/config/version_display.txt && echo -n $(gluon ff-version | tr -d '\n') > src/runtime/config/version_display.txt",
+    "bootstrap": "gluon bootstrap"
   },
   "keywords": [],
   "author": "",

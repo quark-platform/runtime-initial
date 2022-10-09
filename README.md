@@ -1,71 +1,46 @@
 # Quark Runtime
 
+![Discord](https://img.shields.io/discord/835714549545828352?style=flat-square)](https://discord.gg/xNkretH7sD)
+
 This is a **very** experimental replacement for XUL runner, with the goal of providing a method for creating apps built around the Gecko toolkit.
 
 ## Roadmap
 
+- [ ] Internal testing
 - [ ] Basic docs and examples
 - [ ] Code modules for common tasks
 - [ ] Auto generated docs for mozilla internals
 - [ ] Auto generated changelogs for mozilla internals
+- [ ] Example applications and distribution best practices
 
 ## Building from source
 
-First, create a folder to house your application for development:
+You will need nodejs and pnpm installed. Then clone the repo and run the following:
 
 ```bash
-mkdir quark-cleandir
-cd quark-cleandir
+pnpm install
 ```
 
-Then clone the firefox source code, either via `git clone` or `hg clone`:
+If you have never built a copy of Firefox (or any other modern gekco app) on your computer, you will need to run:
 
 ```bash
-git clone --depth 1 https://github.com/mozilla/gecko-dev mozilla-central
+pnpm bootstrap
 ```
 
-Clone this repository:
+Then build it using the following:
 
 ```bash
-git clone https://github.com/quark-platform/runtime
+pnpm build
 ```
 
-Keep track of the location of `mozilla-central`:
+And run it using:
 
 ```bash
-echo $PWD/mozilla-central > runtime/.moz-central
+cd engine
+./mach run -- --app ../example/application.ini
 ```
 
-Now, we need to add our app to the gecko source code:
+## Credits
 
-```bash
-# On macos remove -r to each of the following commands
-ln -s -r runtime mozilla-central/runtime
-ln -s -r runtime/runtime.mozconfig mozilla-central/.mozconfig
-```
-
-Apply custom patches:
-
-```bash
-cd runtime
-./patches.sh import
-cd ..
-```
-
-Configure and build your application:
-
-```bash
-cd mozilla-central
-./mach configure
-./mach build
-```
-
-Then run it:
-
-```bash
-./mach run
-```
-
-## Credit
-
-- [Alexander Vincent](https://github.com/ajvincent/motherhen) - For the begining of this
+- [Alexander Vincent](https://github.com/ajvincent/motherhen) - For the beginning of this
+- [Gluon](https://github.com/pulse-browser/gluon) and its predecessor [Melon](https://github.com/dothq/melon)
