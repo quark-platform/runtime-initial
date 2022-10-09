@@ -1,0 +1,21 @@
+{
+  "name": "runtime",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install": "pnpm download && pnpm bindVersion && pnpm imp",
+    "download": "gluon download",
+    "imp": "gluon import",
+    "build": "gluon build",
+    "start": "gluon run",
+    "package": "gluon package",
+    "bindVersion": "rm src/runtime/config/version.txt && echo -n $(gluon ff-version | tr -d '\n') > src/runtime/config/version.txt && rm src/runtime/config/version_display.txt && echo -n $(gluon ff-version | tr -d '\n') > src/runtime/config/version_display.txt"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gluon-build": "1.0.0-a.2"
+  }
+}

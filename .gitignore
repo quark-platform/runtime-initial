@@ -9,3 +9,8 @@ test/newapp-sym
 
 # A config file pointing to the location of mozilla-central
 .moz-central
+
+node_modules
+dist/
+
+engine/
