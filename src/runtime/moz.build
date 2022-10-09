@@ -13,6 +13,8 @@ DIRS += [
 DIST_SUBDIR = "runtime"
 export("DIST_SUBDIR")
 
-# The firefox setup does not allow for any imports after app on MacOS. Not sure 
+XPCSHELL_TESTS_MANIFESTS += ['tests/xpcshell/xpcshell.ini']
+
+# The firefox setup does not allow for any imports after app on MacOS. Not sure
 # if that applies here, but better safe than sorry
 DIRS += ["app"]

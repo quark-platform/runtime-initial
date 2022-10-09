@@ -1,6 +1,6 @@
 # Quark Runtime
 
-![Discord](https://img.shields.io/discord/835714549545828352?style=flat-square)](https://discord.gg/xNkretH7sD)
+[![Discord](https://img.shields.io/discord/835714549545828352?style=flat-square)](https://discord.gg/xNkretH7sD)
 
 This is a **very** experimental replacement for XUL runner, with the goal of providing a method for creating apps built around the Gecko toolkit.
 

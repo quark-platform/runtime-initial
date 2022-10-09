@@ -9,6 +9,7 @@
     "imp": "gluon import",
     "build": "gluon build",
     "start": "gluon run",
+    "test": "cd engine && ./mach xpcshell-test runtime/tests/xpcshell/",
     "package": "gluon package",
     "bindVersion": "rm src/runtime/config/version.txt && echo -n $(gluon ff-version | tr -d '\n') > src/runtime/config/version.txt && rm src/runtime/config/version_display.txt && echo -n $(gluon ff-version | tr -d '\n') > src/runtime/config/version_display.txt",
     "bootstrap": "gluon bootstrap"
